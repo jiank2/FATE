@@ -308,10 +308,14 @@ for model_name in args.model:
                 idx_sens_train,
             )
 
+            attack_type = args.attack_type
+            if args.attack_type == "dice":
+                attack_type = "dice_sensitive"
+
             file_path = os.path.join(
                 "..",
                 "data",
-                "dice",
+                attack_type,
                 dataset_name,
                 "statistical_parity",
             )

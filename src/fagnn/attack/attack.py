@@ -15,7 +15,6 @@ from deeprobust.graph.utils import (
 import fagnn.structack.node_connection as nc
 import fagnn.structack.node_selection as ns
 from fagnn.attack.fair_attack import Fair_Attack
-from fagnn.attack.fast_dice import DICE
 from fagnn.attack.sacide import SACIDE
 from fagnn.attack.sp_increase import (
     MetaSPI,
@@ -28,6 +27,9 @@ from fagnn.attack.sp_increase import (
 # from attack.metattackSA import MetattackSA
 # from attack.targeted_spi import RandomSPI, NettackSPI, TargetRewireSPI
 from fagnn.structack.structack import build_custom
+
+# from fagnn.attack.fast_dice import DICE
+from models.dice_s import DICE_S as DICE
 
 
 def build_random(
@@ -98,7 +100,7 @@ def attack_random(
 def attack_dice(
     model, adj, features, labels, n_perturbations, idx_train, idx_unlabeled, sens
 ):
-    model.attack(adj, labels, n_perturbations)
+    model.attack(adj, sens, n_perturbations)
     modified_adj = model.modified_adj
     return postprocess_adj(modified_adj)
 

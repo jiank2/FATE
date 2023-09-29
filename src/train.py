@@ -87,7 +87,7 @@ if __name__ == "__main__":
         type=str,
         default="fate",
         help="which attacking method's poisoned dataset.",
-        choices=["fate", "random", "dice", "fagnn"],
+        choices=["fate", "random", "dice_sensitive", "fagnn"],
     )
     parser.add_arugment(
         "--victim_model",
